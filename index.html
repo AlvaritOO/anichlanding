@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confíanos tu Propiedad - Anich Propiedades</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .liquid-gradient {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            background-size: 400% 400%;
+            animation: liquidFlow 8s ease-in-out infinite;
+        }
+        
+        .liquid-gradient-alt {
+            background: linear-gradient(135deg, #5d6d7e 0%, #85929e 100%);
+            background-size: 400% 400%;
+            animation: liquidFlow 10s ease-in-out infinite reverse;
+        }
+        
+        .liquid-gradient-blue {
+            background: linear-gradient(135deg, #34495e 0%, #566573 100%);
+            background-size: 400% 400%;
+            animation: liquidFlow 12s ease-in-out infinite;
+        }
+        
+        @keyframes liquidFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .liquid-button {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.3);
+        }
+        
+        .liquid-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(44, 62, 80, 0.4);
+        }
+        
+        .liquid-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .liquid-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-orb:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-orb:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #5d6d7e 0%, #85929e 100%);
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-orb:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #34495e 0%, #566573 100%);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .liquid-input {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .liquid-input:focus {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #2c3e50;
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+        }
+        
+        .section-padding {
+            padding: 120px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 80px 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 overflow-x-hidden">
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center liquid-gradient overflow-hidden">
+        <div class="floating-orb"></div>
+        <div class="floating-orb"></div>
+        <div class="floating-orb"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="text-white">
+                    <div class="glass rounded-full px-6 py-3 inline-flex items-center mb-8">
+                        <span class="text-sm font-medium">🏆 40 años de experiencia</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+                        Confía tu propiedad a los <span class="text-gray-300">expertos</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl mb-12 text-white/90 leading-relaxed">
+                        40 años de experiencia – Pagos garantizados – Cero estrés para ti.
+                    </p>
+                    <button onclick="scrollToForm()" class="liquid-button text-white font-semibold px-12 py-5 text-lg">
+                        Quiero más información
+                    </button>
+                </div>
+                <div class="relative">
+                    <div class="glass rounded-3xl p-12 text-white text-center">
+                        <div class="w-32 h-32 liquid-gradient-alt rounded-full flex items-center justify-center mx-auto mb-8">
+                            <span class="text-5xl">🏡</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">Familia Feliz</h3>
+                        <p class="text-white/80 text-lg">Propietarios satisfechos con nuestro servicio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section-padding bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="floating-orb opacity-30" style="width: 300px; height: 300px; top: 20%; right: -10%;"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl lg:text-6xl font-bold text-gradient mb-6">¿Por qué Anich Propiedades?</h2>
+                <div class="w-32 h-2 liquid-gradient rounded-full mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="liquid-card p-8 text-center">
+                    <div class="w-20 h-20 liquid-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">⭐</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">40 Años de Experiencia</h3>
+                    <p class="text-gray-600">Más de cuatro décadas en administración inmobiliaria</p>
+                </div>
+                
+                <div class="liquid-card p-8 text-center">
+                    <div class="w-20 h-20 liquid-gradient-alt rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">💰</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Pagos Garantizados</h3>
+                    <p class="text-gray-600">Hasta 3 meses cubiertos si tu arrendatario no paga</p>
+                </div>
+                
+                <div class="liquid-card p-8 text-center">
+                    <div class="w-20 h-20 liquid-gradient-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Gestión Transparente</h3>
+                    <p class="text-gray-600">Puntualidad en depósitos y claridad total</p>
+                </div>
+                
+                <div class="liquid-card p-8 text-center">
+                    <div class="w-20 h-20 liquid-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">🛡️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Respaldo Sólido</h3>
+                    <p class="text-gray-600">Respaldo económico e inmobiliario confiable</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <button onclick="scrollToForm()" class="liquid-button text-white font-semibold px-10 py-4 text-lg">
+                    Cotiza gratis tu propiedad
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section-padding liquid-gradient-alt relative overflow-hidden">
+        <div class="floating-orb opacity-20" style="width: 250px; height: 250px; top: 10%; left: -5%;"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="text-white">
+                    <h2 class="text-5xl lg:text-6xl font-bold mb-12">Tu tranquilidad es nuestra prioridad</h2>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-2">
+                                <span class="text-white text-lg">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Tranquilidad total</h3>
+                                <p class="text-white/80">Sin preocuparte por la gestión diaria</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-2">
+                                <span class="text-white text-lg">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Menos estrés y más tiempo libre</h3>
+                                <p class="text-white/80">Nosotros nos encargamos de todo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-2">
+                                <span class="text-white text-lg">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Pagos oportunos</h3>
+                                <p class="text-white/80">Claridad en todas tus cuentas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-2">
+                                <span class="text-white text-lg">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Tasación gratuita</h3>
+                                <p class="text-white/80">Cuantas veces lo necesites</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-2">
+                                <span class="text-white text-lg">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Selección profesional</h3>
+                                <p class="text-white/80">De arrendatarios confiables</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-2">
+                                <span class="text-white text-lg">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Contrato completo</h3>
+                                <p class="text-white/80">Con inventario incluido</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass rounded-3xl p-10 text-white">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-8">
+                            <span class="text-3xl">💬</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-6">Testimonio</h3>
+                        <blockquote class="text-xl italic mb-6 leading-relaxed">
+                            "Con Anich, arrendé mi propiedad en menos de 2 semanas y recibo mis pagos siempre a tiempo"
+                        </blockquote>
+                        <p class="text-white/70">- Cliente satisfecho</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Guarantee Section -->
+    <section class="section-padding bg-black text-white relative overflow-hidden">
+        <div class="floating-orb opacity-30" style="width: 400px; height: 400px; top: -10%; right: -10%;"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-5xl lg:text-6xl font-bold mb-6">Garantía única en Rancagua</h2>
+            <div class="w-32 h-2 liquid-gradient-blue rounded-full mx-auto mb-20"></div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-dark rounded-3xl p-10">
+                    <div class="w-24 h-24 liquid-gradient rounded-full flex items-center justify-center mx-auto mb-8">
+                        <span class="text-3xl text-white">🛡️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6">Cobertura Garantizada</h3>
+                    <p class="text-white/80 text-lg">3 meses de arriendo garantizados en caso de imprevistos</p>
+                </div>
+                
+                <div class="glass-dark rounded-3xl p-10">
+                    <div class="w-24 h-24 liquid-gradient-alt rounded-full flex items-center justify-center mx-auto mb-8">
+                        <span class="text-3xl text-white">📢</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6">Publicación Gratuita</h3>
+                    <p class="text-white/80 text-lg">Publicamos tu propiedad gratis cada vez que se desocupe</p>
+                </div>
+                
+                <div class="glass-dark rounded-3xl p-10">
+                    <div class="w-24 h-24 liquid-gradient-blue rounded-full flex items-center justify-center mx-auto mb-8">
+                        <span class="text-3xl text-white">🌐</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6">Difusión Completa</h3>
+                    <p class="text-white/80 text-lg">Web, redes sociales, Yapo.cl y radio sin costo adicional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="section-padding bg-white relative overflow-hidden">
+        <div class="floating-orb opacity-20" style="width: 200px; height: 200px; bottom: 10%; right: 10%;"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-5xl lg:text-6xl font-bold text-gradient mb-12">Expertos en administración de propiedades desde hace 40 años</h2>
+            <div class="w-32 h-2 liquid-gradient rounded-full mx-auto mb-12"></div>
+            <p class="text-2xl text-gray-600 leading-relaxed">
+                En Anich Propiedades nos hemos ganado la confianza de cientos de dueños en Rancagua gracias a nuestra honestidad, transparencia y atención cercana. Nuestro compromiso es que tú disfrutes de tu tiempo, mientras nosotros cuidamos tu inversión.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="section-padding liquid-gradient relative overflow-hidden">
+        <div class="floating-orb opacity-20" style="width: 300px; height: 300px; top: 20%; left: -5%;"></div>
+        
+        <div class="relative z-10 max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16 text-white">
+                <h2 class="text-5xl lg:text-6xl font-bold mb-8">¿Quieres más información sobre la administración de tu propiedad?</h2>
+                <p class="text-xl text-white/90">Déjanos tus datos y un ejecutivo te contactará a la brevedad.</p>
+            </div>
+            
+            <form class="glass rounded-3xl p-12" onsubmit="handleSubmit(event)">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <label class="block text-sm font-medium text-white mb-3">Nombre completo *</label>
+                        <input type="text" required class="liquid-input w-full px-6 py-4 text-gray-900 placeholder-gray-500" placeholder="Tu nombre completo">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-white mb-3">Teléfono *</label>
+                        <input type="tel" required class="liquid-input w-full px-6 py-4 text-gray-900 placeholder-gray-500" placeholder="+56 9 1234 5678">
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-white mb-3">Email *</label>
+                    <input type="email" required class="liquid-input w-full px-6 py-4 text-gray-900 placeholder-gray-500" placeholder="tu@email.com">
+                </div>
+                
+                <div class="mb-12">
+                    <label class="block text-sm font-medium text-white mb-3">Tipo de propiedad</label>
+                    <select class="liquid-input w-full px-6 py-4 text-gray-900">
+                        <option value="">Selecciona una opción</option>
+                        <option value="departamento">Departamento</option>
+                        <option value="casa">Casa</option>
+                        <option value="oficina">Oficina</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="liquid-button w-full text-white font-bold py-5 text-xl">
+                    Quiero que me contacten
+                </button>
+                
+                <p class="text-sm text-white/70 text-center mt-6">
+                    Al enviar este formulario, aceptas nuestra política de privacidad.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-20 px-6 relative overflow-hidden">
+        <div class="floating-orb opacity-10" style="width: 250px; height: 250px; bottom: -10%; left: 10%;"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-8">
+                        <div class="w-16 h-16 liquid-gradient rounded-2xl flex items-center justify-center mr-4">
+                            <span class="text-2xl font-bold text-white">A</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Anich Propiedades</h3>
+                            <p class="text-white/70">Confianza, respaldo y 40 años de experiencia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Contacto</h4>
+                    <div class="space-y-4 text-white/80">
+                        <p class="flex items-center"><span class="mr-3">📞</span> +56 (72) 256 7225</p>
+                        <p class="flex items-center"><span class="mr-3">📱</span> WhatsApp: +56 9 6607 8526</p>
+                        <p class="flex items-center"><span class="mr-3">📍</span> German Riesco 320, Oficina B Rancagua</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 liquid-gradient rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-white font-bold">f</span>
+                        </a>
+                        <a href="#" class="w-12 h-12 liquid-gradient-alt rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-white font-bold">ig</span>
+                        </a>
+                        <a href="#" class="w-12 h-12 liquid-gradient-blue rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <span class="text-white font-bold">tw</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 pt-8 text-center text-white/60">
+                <p>&copy; 2024 Anich Propiedades. Todos los derechos reservados. | <a href="#" class="hover:text-white transition-colors">Política de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById('contact-form').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Show success message with Apple-style animation
+            const button = event.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            button.textContent = '¡Enviado! ✓';
+            button.style.background = 'linear-gradient(135deg, #5d6d7e 0%, #85929e 100%)';
+            
+            setTimeout(() => {
+                alert('¡Gracias por tu interés! Un ejecutivo se contactará contigo pronto.');
+                button.textContent = originalText;
+                button.style.background = '';
+                event.target.reset();
+            }, 1500);
+        }
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for floating orbs
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const orbs = document.querySelectorAll('.floating-orb');
+            
+            orbs.forEach((orb, index) => {
+                const speed = 0.5 + (index * 0.1);
+                orb.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97855e8660cab514',t:'MTc1NjczNjAxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
