@@ -4,559 +4,376 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anich Pro - Arrienda tu propiedad 100% online</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#FF385C',
-                        secondary: '#FFFFFF',
-                        tertiary: '#000000'
-                    },
-                    fontFamily: {
-                        sans: ['Circular', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        .star-icon { color: #FFB81C; }
-        .card-transition { transition: all 0.3s cubic-bezier(0.2, 0.3, 0.25, 0.46); }
-        .property-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif; }
+        .property-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .property-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
     </style>
 </head>
-<body class="bg-white text-black font-sans">
-    <!-- Header -->
-    <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-primary flex items-center gap-2">
-                    🏠 Anich Pro
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#propiedades" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Propiedades</a>
-                    <a href="#planes" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Planes</a>
-                    <a href="#seguro" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Seguro</a>
-                    <a href="#contacto" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Contacto</a>
-                </div>
-                <button id="mobile-menu-button" class="md:hidden text-black focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </nav>
-    </header>
+<body class="bg-white text-gray-900">
 
-    <!-- Hero Section -->
-    <section id="inicio" class="bg-white pt-12 pb-20">
-        <div class="container mx-auto px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-12">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight text-gray-900">
-                        Arrienda tu propiedad
-                    </h1>
-                    <h2 class="text-3xl md:text-4xl font-light text-gray-600 mb-6">
-                        de forma sencilla y 100% online
-                    </h2>
-                    <p class="text-xl text-gray-600 mb-12 max-w-2xl">
-                        Administración completa de propiedades desde publicación hasta cobro. Sin complicaciones.
-                    </p>
-                </div>
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold text-red-500">🏠 Anich Pro</div>
+        <div class="hidden md:flex gap-8">
+            <a href="#propiedades" class="text-gray-700 hover:text-red-500 font-medium">Propiedades</a>
+            <a href="#planes" class="text-gray-700 hover:text-red-500 font-medium">Planes</a>
+            <a href="#seguro" class="text-gray-700 hover:text-red-500 font-medium">Seguro</a>
+            <a href="#contacto" class="text-gray-700 hover:text-red-500 font-medium">Contacto</a>
+        </div>
+    </nav>
+</header>
 
-                <!-- Search Box (Airbnb Style) -->
-                <div class="bg-white rounded-3xl shadow-lg p-4 mb-12 border border-gray-100">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-0">
-                        <div class="px-6 py-4 border-b md:border-b-0 md:border-r border-gray-100">
-                            <label class="block text-xs font-semibold text-gray-500 mb-2">UBICACIÓN</label>
-                            <input type="text" placeholder="¿Dónde está tu propiedad?" class="w-full bg-transparent focus:outline-none text-gray-900">
-                        </div>
-                        <div class="px-6 py-4 border-b md:border-b-0 md:border-r border-gray-100">
-                            <label class="block text-xs font-semibold text-gray-500 mb-2">TIPO</label>
-                            <select class="w-full bg-transparent focus:outline-none text-gray-900">
-                                <option>Casa</option>
-                                <option>Departamento</option>
-                                <option>Oficina</option>
-                            </select>
-                        </div>
-                        <div class="px-6 py-4 border-b md:border-b-0 md:border-r border-gray-100">
-                            <label class="block text-xs font-semibold text-gray-500 mb-2">PRECIO RENTA</label>
-                            <input type="text" placeholder="Precio mensual" class="w-full bg-transparent focus:outline-none text-gray-900">
-                        </div>
-                        <div class="px-6 py-4 flex items-end">
-                            <button class="w-full bg-primary text-white py-3 rounded-2xl font-semibold hover:bg-red-500 transition-colors">
-                                Buscar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+<!-- HERO SECTION -->
+<section class="bg-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Arrienda tu propiedad<br>de forma sencilla y 100% online
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl">
+                Administración completa de propiedades desde publicación hasta cobro. Sin complicaciones.
+            </p>
+        </div>
 
-                <div class="flex gap-4">
-                    <a href="https://wa.me/56966078526" target="_blank" rel="noopener"
-                       class="inline-block bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-500 transition-colors shadow-md">
-                        Comenzar Ahora
-                    </a>
-                    <a href="https://wa.me/56966078526" target="_blank" rel="noopener"
-                       class="inline-block border-2 border-gray-300 text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:border-gray-400 transition-colors">
-                        Más Información
-                    </a>
+        <!-- Search Box -->
+        <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 mb-2 block">UBICACIÓN</label>
+                    <input type="text" placeholder="¿Dónde?" class="w-full border-0 focus:outline-none text-gray-900">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 mb-2 block">TIPO</label>
+                    <select class="w-full border-0 focus:outline-none text-gray-900">
+                        <option>Casa</option>
+                        <option>Departamento</option>
+                        <option>Oficina</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 mb-2 block">PRECIO</label>
+                    <input type="text" placeholder="Rango" class="w-full border-0 focus:outline-none text-gray-900">
+                </div>
+                <div class="flex items-end">
+                    <button class="w-full bg-red-500 text-white py-3 rounded-lg font-bold hover:bg-red-600">Buscar</button>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Recent Properties Section -->
-    <section id="propiedades" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-                    Propiedades Destacadas
-                </h2>
-                <p class="text-xl text-gray-600">
-                    Descubre las propiedades más solicitadas en Anich Pro
-                </p>
-            </div>
+        <div class="flex gap-4">
+            <a href="https://wa.me/56966078526" target="_blank" class="bg-red-500 text-white px-8 py-3 rounded-full font-bold hover:bg-red-600">
+                Comenzar Ahora
+            </a>
+            <a href="https://wa.me/56966078526" target="_blank" class="border-2 border-gray-300 text-gray-900 px-8 py-3 rounded-full font-bold hover:border-gray-400">
+                Más Info
+            </a>
+        </div>
+    </div>
+</section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Property Card 1 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden cursor-pointer group">
-                    <div class="relative overflow-hidden bg-gray-200 h-64">
-                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&h=500&fit=crop" alt="Casa moderna" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                        <button class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow">
-                            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute bottom-3 left-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-gray-900">
-                            ★ 4.8 (124)
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-semibold text-gray-900">Casa en La Florida</h3>
-                            <span class="text-primary font-bold">3/5</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-3">📍 La Florida, Región Metropolitana</p>
-                        <p class="text-gray-700 text-sm mb-4">Casa de 2 habitaciones con patio y garaje</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-gray-900">$1.200.000</span>
-                            <span class="text-gray-600 text-sm">por mes</span>
-                        </div>
-                    </div>
-                </div>
+<!-- PROPIEDADES RECIENTES -->
+<section id="propiedades" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-16">
+            <h2 class="text-4xl font-bold mb-4">Propiedades Destacadas</h2>
+            <p class="text-xl text-gray-600">Descubre las propiedades más solicitadas</p>
+        </div>
 
-                <!-- Property Card 2 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden cursor-pointer group">
-                    <div class="relative overflow-hidden bg-gray-200 h-64">
-                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=500&fit=crop" alt="Departamento" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                        <button class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow">
-                            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute bottom-3 left-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-gray-900">
-                            ★ 4.9 (89)
-                        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <!-- Card 1 -->
+            <div class="property-card bg-white rounded-xl overflow-hidden">
+                <div class="bg-gradient-to-br from-blue-400 to-blue-600 h-48 flex items-center justify-center text-white text-6xl">🏠</div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Casa La Florida</h3>
+                        <span class="text-red-500 font-bold text-sm">★ 4.8</span>
                     </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-semibold text-gray-900">Depto Centro</h3>
-                            <span class="text-primary font-bold">4/5</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-3">📍 Centro, Santiago</p>
-                        <p class="text-gray-700 text-sm mb-4">Departamento 1 dormitorio amoblado</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-gray-900">$850.000</span>
-                            <span class="text-gray-600 text-sm">por mes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property Card 3 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden cursor-pointer group">
-                    <div class="relative overflow-hidden bg-gray-200 h-64">
-                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&h=500&fit=crop" alt="Casa con vista" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                        <button class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow">
-                            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute bottom-3 left-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-gray-900">
-                            ★ 4.7 (156)
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-semibold text-gray-900">Villa Las Condes</h3>
-                            <span class="text-primary font-bold">5/5</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-3">📍 Las Condes, Santiago</p>
-                        <p class="text-gray-700 text-sm mb-4">Villa 3 pisos con piscina y jardín</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-gray-900">$3.500.000</span>
-                            <span class="text-gray-600 text-sm">por mes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property Card 4 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden cursor-pointer group">
-                    <div class="relative overflow-hidden bg-gray-200 h-64">
-                        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&h=500&fit=crop" alt="Oficina moderna" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                        <button class="absolute top-3 right-3 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow">
-                            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute bottom-3 left-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-gray-900">
-                            ★ 4.6 (74)
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-semibold text-gray-900">Oficina Empresarial</h3>
-                            <span class="text-primary font-bold">2/5</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-3">📍 Providencia, Santiago</p>
-                        <p class="text-gray-700 text-sm mb-4">Oficina corporativa 200m² equipada</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-gray-900">$2.800.000</span>
-                            <span class="text-gray-600 text-sm">por mes</span>
-                        </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 La Florida, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Casa 2 dormitorios con patio y garaje</p>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$1.2M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-16">
-                <a href="https://wa.me/56966078526" target="_blank" rel="noopener"
-                   class="inline-block bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-500 transition-colors shadow-md">
-                    Ver Todas las Propiedades
+            <!-- Card 2 -->
+            <div class="property-card bg-white rounded-xl overflow-hidden">
+                <div class="bg-gradient-to-br from-purple-400 to-purple-600 h-48 flex items-center justify-center text-white text-6xl">🏢</div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Depto Centro</h3>
+                        <span class="text-red-500 font-bold text-sm">★ 4.9</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Centro, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Departamento 1 dormitorio amoblado</p>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$850K</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="property-card bg-white rounded-xl overflow-hidden">
+                <div class="bg-gradient-to-br from-green-400 to-green-600 h-48 flex items-center justify-center text-white text-6xl">🏡</div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Villa Las Condes</h3>
+                        <span class="text-red-500 font-bold text-sm">★ 4.7</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Las Condes, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Villa 3 pisos con piscina y jardín</p>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$3.5M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="property-card bg-white rounded-xl overflow-hidden">
+                <div class="bg-gradient-to-br from-orange-400 to-orange-600 h-48 flex items-center justify-center text-white text-6xl">🏗️</div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Oficina Providencia</h3>
+                        <span class="text-red-500 font-bold text-sm">★ 4.6</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Providencia, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Oficina moderna 200m² equipada</p>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$2.8M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="https://wa.me/56966078526" target="_blank" class="bg-red-500 text-white px-8 py-3 rounded-full font-bold hover:bg-red-600 inline-block">
+                Ver Todas las Propiedades
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- PLANES -->
+<section id="planes" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-16 text-center">
+            <h2 class="text-4xl font-bold mb-4">Planes de Administración</h2>
+            <p class="text-xl text-gray-600">Desde un <span class="text-red-500 font-bold">5% + IVA</span></p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Plan 1 -->
+            <div class="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-bold mb-2">Plan Inicia</h3>
+                <div class="text-4xl font-bold text-red-500 mb-6">5% + IVA</div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Reajuste en base al IPC</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Recordatorio pago arriendo</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Cobro multas por atraso</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Publicación en Dicom</span>
+                    </li>
+                </ul>
+                <button class="w-full bg-red-500 text-white py-3 rounded-lg font-bold hover:bg-red-600">Elegir Plan</button>
+            </div>
+
+            <!-- Plan 2 - Popular -->
+            <div class="bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-500 rounded-xl p-8 relative">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-1 rounded-full text-sm font-bold">
+                    Más Popular ⭐
+                </div>
+                <h3 class="text-2xl font-bold mb-2 pt-4">Plan Consolida</h3>
+                <div class="text-4xl font-bold text-red-500 mb-6">8% + IVA</div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Beneficios Plan Inicia</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Control cuentas y gastos</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Relación con arrendatarios</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Pago contribuciones</span>
+                    </li>
+                </ul>
+                <button class="w-full bg-red-500 text-white py-3 rounded-lg font-bold hover:bg-red-600">Elegir Plan</button>
+            </div>
+
+            <!-- Plan 3 -->
+            <div class="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-bold mb-2">Plan Excepcional</h3>
+                <div class="text-4xl font-bold text-red-500 mb-6">10% + IVA</div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Todos los beneficios</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Gestión mantenciones</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Admin de garantías</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span>Visita anual propiedad</span>
+                    </li>
+                </ul>
+                <button class="w-full bg-red-500 text-white py-3 rounded-lg font-bold hover:bg-red-600">Elegir Plan</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEGURO -->
+<section id="seguro" class="py-20 bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl font-bold mb-4">Protege tu inversión</h2>
+                <h3 class="text-2xl text-red-500 font-bold mb-8">Con nuestro seguro de arriendo</h3>
+
+                <div class="space-y-6 mb-8">
+                    <div class="flex gap-4">
+                        <div class="text-3xl">🛡️</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Cobertura Completa</h4>
+                            <p class="text-gray-300">Hasta 3 meses de arriendo garantizado</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-3xl">⚡</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Proceso Inmediato</h4>
+                            <p class="text-gray-300">Activación 100% digital</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-3xl">💼</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Tranquilidad Total</h4>
+                            <p class="text-gray-300">Tus ingresos siempre protegidos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/56966078526" target="_blank" class="bg-red-500 text-white px-8 py-3 rounded-full font-bold hover:bg-red-600 inline-block">
+                    Contratar Seguro
                 </a>
             </div>
-        </div>
-    </section>
-
-    <!-- Planes Section -->
-    <section id="planes" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                    Planes de Administración
-                </h2>
-                <p class="text-xl text-gray-600">Desde un <span class="text-primary font-bold">5% + IVA</span></p>
-                <p class="text-lg text-gray-600 mt-2">Elige el plan que mejor se adapte a tus necesidades</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Plan Bronce -->
-                <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-8 hover:shadow-xl card-transition">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Plan Inicia</h3>
-                        <div class="text-4xl font-bold text-primary mb-2">5% + IVA</div>
-                    </div>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Reajuste en base al IPC</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Recordatorio para el pago de arriendo</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Cobro de multas por atraso en el pago</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Capacidad de publicación en Dicom</span>
-                        </li>
-                    </ul>
-                    <a href="https://wa.me/56966078526" target="_blank" rel="noopener"
-                       class="block w-full mt-8 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200 text-center">
-                        Elegir Plan
-                    </a>
-                </div>
-
-                <!-- Plan Plata -->
-                <div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl shadow-lg border border-primary p-8 relative hover:shadow-xl card-transition">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span class="bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold">
-                            Más Popular ⭐
-                        </span>
-                    </div>
-                    <div class="text-center mb-6 pt-4">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Plan Consolida</h3>
-                        <div class="text-4xl font-bold text-primary mb-2">8% + IVA</div>
-                    </div>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="font-semibold">Beneficios plan Inicia</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Control de cuentas y gastos comunes</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Relación con arrendatarios</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Pago de contribuciones y/o dividendos</span>
-                        </li>
-                    </ul>
-                    <a href="https://wa.me/56966078526" target="_blank" rel="noopener"
-                       class="block w-full mt-8 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200 text-center">
-                        Elegir Plan
-                    </a>
-                </div>
-
-                <!-- Plan Oro -->
-                <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-8 hover:shadow-xl card-transition">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Plan Excepcional</h3>
-                        <div class="text-4xl font-bold text-primary mb-2">10% + IVA</div>
-                    </div>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="font-semibold">Beneficios planes Inicia y Consolida</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Gestión de mantenciones y/o reparaciones</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Administración de garantías</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Visita anual a la propiedad</span>
-                        </li>
-                    </ul>
-                    <a href="https://wa.me/56966078526" target="_blank" rel="noopener"
-                       class="block w-full mt-8 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200 text-center">
-                        Elegir Plan
-                    </a>
-                </div>
+            <div class="bg-gradient-to-br from-red-900/30 to-red-900/10 rounded-xl p-12 flex items-center justify-center text-7xl">
+                🏠
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Seguro Section -->
-    <section id="seguro" class="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <!-- Left Content -->
-                    <div>
-                        <h2 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-                            Protege tu inversión
-                        </h2>
-                        <h3 class="text-2xl text-primary font-semibold mb-8">
-                            con nuestro seguro de arriendo
-                        </h3>
+<!-- CTA -->
+<section class="py-20 bg-gradient-to-r from-red-500 to-red-600 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold mb-6">¿Listo para Comenzar?</h2>
+        <p class="text-xl mb-8 opacity-90">Únete a cientos de propietarios que confían en Anich Pro</p>
+        <div class="flex gap-4 justify-center flex-wrap">
+            <a href="https://wa.me/56966078526" target="_blank" class="bg-white text-red-500 px-8 py-3 rounded-full font-bold hover:bg-gray-100">
+                Comenzar Ahora
+            </a>
+            <a href="https://wa.me/56966078526" target="_blank" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white/10">
+                Solicitar Info
+            </a>
+        </div>
+    </div>
+</section>
 
-                        <div class="space-y-6 mb-8">
-                            <div class="flex items-start gap-4">
-                                <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/20">
-                                        <span class="text-2xl">🛡️</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-semibold mb-2">Cobertura Completa</h4>
-                                    <p class="text-gray-300">Hasta 3 meses de arriendo garantizado en caso de no pago</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4">
-                                <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/20">
-                                        <span class="text-2xl">⚡</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-semibold mb-2">Proceso Inmediato</h4>
-                                    <p class="text-gray-300">Activación y trámites 100% digitales sin complicaciones</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4">
-                                <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/20">
-                                        <span class="text-2xl">💼</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-semibold mb-2">Tranquilidad Total</h4>
-                                    <p class="text-gray-300">Tus ingresos siempre protegidos, sin sorpresas</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p class="text-gray-400 text-sm mb-8">
-                            * Disponible con cualquiera de nuestros planes de administración
-                        </p>
-
-                        <a href="https://wa.me/56966078526" target="_blank" rel="noopener"
-                           class="inline-block bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-500 transition-colors shadow-lg">
-                            Contratar Seguro
-                        </a>
-                    </div>
-
-                    <!-- Right Image -->
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl"></div>
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=600&fit=crop" alt="Seguro" class="w-full rounded-3xl shadow-2xl relative z-10">
-                    </div>
-                </div>
+<!-- FOOTER -->
+<footer id="contacto" class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-5 gap-8 mb-12">
+            <div>
+                <h3 class="text-2xl font-bold text-red-500 mb-4">🏠 Anich Pro</h3>
+                <p class="text-gray-400">Administración de propiedades 100% digital</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Servicios</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#planes" class="hover:text-red-500">Administración</a></li>
+                    <li><a href="#seguro" class="hover:text-red-500">Seguro</a></li>
+                    <li><a href="#propiedades" class="hover:text-red-500">Propiedades</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Planes</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#planes" class="hover:text-red-500">Plan Inicia</a></li>
+                    <li><a href="#planes" class="hover:text-red-500">Plan Consolida</a></li>
+                    <li><a href="#planes" class="hover:text-red-500">Plan Excepcional</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Empresa</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#" class="hover:text-red-500">Sobre Nosotros</a></li>
+                    <li><a href="#" class="hover:text-red-500">Blog</a></li>
+                    <li><a href="#" class="hover:text-red-500">Términos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Contacto</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li>📞 +56 7 225 67 225</li>
+                    <li>📍 Rancagua, Chile</li>
+                    <li><a href="https://wa.me/56966078526" class="hover:text-red-500">💬 WhatsApp</a></li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-primary to-red-500 text-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                    ¿Listo para Administrar tu Propiedad?
-                </h2>
-                <p class="text-xl mb-10 opacity-90">
-                    Únete a cientos de propietarios que ya confían en Anich Pro. Proceso 100% digital sin complicaciones.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://wa.me/56966078526" target="_blank" rel="noopener"
-                       class="bg-white text-primary px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition-colors shadow-lg">
-                        Comenzar Ahora
-                    </a>
-                    <a href="https://wa.me/56985278900" target="_blank" rel="noopener"
-                       class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/10 transition-colors">
-                        Solicitar Información
-                    </a>
-                </div>
+        <div class="border-t border-gray-800 pt-8 flex justify-between items-center flex-wrap gap-4">
+            <p class="text-gray-400 text-sm">&copy; 2025 Anich Pro. Todos los derechos reservados.</p>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-400 hover:text-red-500 text-sm">Privacidad</a>
+                <a href="#" class="text-gray-400 hover:text-red-500 text-sm">Términos</a>
+                <a href="#" class="text-gray-400 hover:text-red-500 text-sm">Cookies</a>
             </div>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <!-- Footer -->
-    <footer id="contacto" class="bg-gray-900 text-white py-16">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-5 gap-8 mb-12">
-                <div>
-                    <h3 class="text-2xl font-bold text-primary mb-4">🏠 Anich Pro</h3>
-                    <p class="text-gray-400 text-sm">
-                        La plataforma de confianza para administrar tu propiedad 100% digital
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4 text-white">Servicios</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#planes" class="hover:text-primary transition-colors">Administración</a></li>
-                        <li><a href="#seguro" class="hover:text-primary transition-colors">Seguro de Arriendo</a></li>
-                        <li><a href="#propiedades" class="hover:text-primary transition-colors">Propiedades</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4 text-white">Planes</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#planes" class="hover:text-primary transition-colors">Plan Inicia</a></li>
-                        <li><a href="#planes" class="hover:text-primary transition-colors">Plan Consolida</a></li>
-                        <li><a href="#planes" class="hover:text-primary transition-colors">Plan Excepcional</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4 text-white">Empresa</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#" class="hover:text-primary transition-colors">Sobre Nosotros</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Términos</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4 text-white">Contacto</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li class="flex items-center gap-2">
-                            <span>📞</span>
-                            <span>+56 7 225 67 225</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span>📍</span>
-                            <span>Rancagua, Chile</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span>💬</span>
-                            <a href="https://wa.me/56966078526" class="hover:text-primary transition-colors">WhatsApp</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-gray-400 text-sm">&copy; 2025 Anich Pro. Todos los derechos reservados.</p>
-                    <div class="flex gap-6 mt-6 md:mt-0">
-                        <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Privacidad</a>
-                        <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Términos</a>
-                        <a href="#" class="text-gray-400 hover:text-primary transition-colors text-sm">Cookies</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Smooth scrolling para enlaces de anclaje
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
+    });
+</script>
 
-        // Menú móvil (opcional)
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        mobileMenuButton.addEventListener('click', () => {
-            alert('¿Te gustaría contactarnos por WhatsApp?');
-            window.open('https://wa.me/56966078526', '_blank');
-        });
-    </script>
 </body>
 </html>
