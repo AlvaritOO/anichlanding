@@ -20,6 +20,7 @@
         <div class="text-2xl font-bold text-red-500">🏠 Anich Pro</div>
         <div class="hidden md:flex gap-8">
             <a href="#propiedades" class="text-gray-700 hover:text-red-500 font-medium">Propiedades</a>
+            <a href="#catalogo" class="text-gray-700 hover:text-red-500 font-medium">Catálogo</a>
             <a href="#planes" class="text-gray-700 hover:text-red-500 font-medium">Planes</a>
             <a href="#seguro" class="text-gray-700 hover:text-red-500 font-medium">Seguro</a>
             <a href="#contacto" class="text-gray-700 hover:text-red-500 font-medium">Contacto</a>
@@ -154,8 +155,259 @@
         </div>
 
         <div class="text-center">
-            <a href="https://wa.me/56966078526" target="_blank" class="bg-red-500 text-white px-8 py-3 rounded-full font-bold hover:bg-red-600 inline-block">
+            <a href="#catalogo" class="bg-red-500 text-white px-8 py-3 rounded-full font-bold hover:bg-red-600 inline-block">
                 Ver Todas las Propiedades
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CATALOGO DE PROPIEDADES -->
+<section id="catalogo" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+            <h2 class="text-4xl font-bold mb-4">Catálogo Completo</h2>
+            <p class="text-xl text-gray-600">Explora todas las propiedades que administramos</p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="bg-gray-50 rounded-2xl p-6 mb-12 border border-gray-200">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 mb-2 block">UBICACIÓN</label>
+                    <input type="text" id="filterLocation" placeholder="Ciudad o comuna" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 mb-2 block">TIPO</label>
+                    <select id="filterType" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
+                        <option value="">Todos</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Departamento">Departamento</option>
+                        <option value="Oficina">Oficina</option>
+                        <option value="Local">Local Comercial</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 mb-2 block">DORMITORIOS</label>
+                    <select id="filterBeds" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
+                        <option value="">Todos</option>
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 mb-2 block">PRECIO</label>
+                    <select id="filterPrice" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
+                        <option value="">Todos</option>
+                        <option value="500">Hasta $500K</option>
+                        <option value="1000">$500K - $1M</option>
+                        <option value="2000">$1M - $2M</option>
+                        <option value="2001">Más de $2M</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button onclick="filterProperties()" class="w-full bg-red-500 text-white py-2 rounded-lg font-bold hover:bg-red-600">Filtrar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de Propiedades -->
+        <div id="propertiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Property Card Template -->
+            <div class="property-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-500 hover:shadow-xl property-item" data-type="Casa" data-location="La Florida" data-beds="2" data-price="1200">
+                <div class="bg-gradient-to-br from-blue-400 to-blue-600 h-48 flex items-center justify-center text-white text-6xl">🏠</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Casa La Florida</h3>
+                        <span class="bg-red-100 text-red-500 text-xs font-bold px-3 py-1 rounded-full">Disponible</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 La Florida, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Casa moderna 2 dormitorios con patio y garaje cubierto. Perfecta para familias.</p>
+                    <div class="flex gap-4 mb-4 text-sm text-gray-600">
+                        <span>🛏️ 2 dorm</span>
+                        <span>🚿 2 baños</span>
+                        <span>📐 120 m²</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$1.2M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-500 hover:shadow-xl property-item" data-type="Departamento" data-location="Centro" data-beds="1" data-price="850">
+                <div class="bg-gradient-to-br from-purple-400 to-purple-600 h-48 flex items-center justify-center text-white text-6xl">🏢</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Depto Centro Amoblado</h3>
+                        <span class="bg-red-100 text-red-500 text-xs font-bold px-3 py-1 rounded-full">Disponible</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Centro, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Departamento 1 dormitorio amoblado en zona comercial. Ideal para ejecutivos.</p>
+                    <div class="flex gap-4 mb-4 text-sm text-gray-600">
+                        <span>🛏️ 1 dorm</span>
+                        <span>🚿 1 baño</span>
+                        <span>📐 60 m²</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$850K</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-500 hover:shadow-xl property-item" data-type="Casa" data-location="Las Condes" data-beds="3" data-price="3500">
+                <div class="bg-gradient-to-br from-green-400 to-green-600 h-48 flex items-center justify-center text-white text-6xl">🏡</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Villa Las Condes</h3>
+                        <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-3 py-1 rounded-full">Premium</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Las Condes, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Villa 3 pisos con piscina, jardín y terrazas. Zona residencial exclusiva.</p>
+                    <div class="flex gap-4 mb-4 text-sm text-gray-600">
+                        <span>🛏️ 3 dorm</span>
+                        <span>🚿 3 baños</span>
+                        <span>📐 280 m²</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$3.5M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-500 hover:shadow-xl property-item" data-type="Oficina" data-location="Providencia" data-beds="0" data-price="2800">
+                <div class="bg-gradient-to-br from-orange-400 to-orange-600 h-48 flex items-center justify-center text-white text-6xl">🏢</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Oficina Providencia</h3>
+                        <span class="bg-red-100 text-red-500 text-xs font-bold px-3 py-1 rounded-full">Disponible</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Providencia, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Oficina moderna y equipada en edificio corporativo. Estacionamientos incluidos.</p>
+                    <div class="flex gap-4 mb-4 text-sm text-gray-600">
+                        <span>💼 Oficina</span>
+                        <span>🅿️ 4 estacionamientos</span>
+                        <span>📐 200 m²</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$2.8M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-500 hover:shadow-xl property-item" data-type="Departamento" data-location="Ñuñoa" data-beds="2" data-price="1500">
+                <div class="bg-gradient-to-br from-pink-400 to-pink-600 h-48 flex items-center justify-center text-white text-6xl">🏠</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Depto Ñuñoa</h3>
+                        <span class="bg-red-100 text-red-500 text-xs font-bold px-3 py-1 rounded-full">Disponible</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Ñuñoa, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Departamento con vista a parque. Acceso a zonas comerciales y transporte público.</p>
+                    <div class="flex gap-4 mb-4 text-sm text-gray-600">
+                        <span>🛏️ 2 dorm</span>
+                        <span>🚿 2 baños</span>
+                        <span>📐 95 m²</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$1.5M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-500 hover:shadow-xl property-item" data-type="Casa" data-location="Recoleta" data-beds="3" data-price="2200">
+                <div class="bg-gradient-to-br from-indigo-400 to-indigo-600 h-48 flex items-center justify-center text-white text-6xl">🏘️</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Casa Recoleta</h3>
+                        <span class="bg-red-100 text-red-500 text-xs font-bold px-3 py-1 rounded-full">Disponible</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Recoleta, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Casa restaurada con estilo bohemio. Zona de gastronomía y vida cultural vibrante.</p>
+                    <div class="flex gap-4 mb-4 text-sm text-gray-600">
+                        <span>🛏️ 3 dorm</span>
+                        <span>🚿 2 baños</span>
+                        <span>📐 150 m²</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$2.2M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-500 hover:shadow-xl property-item" data-type="Local" data-location="Providencia" data-beds="0" data-price="1800">
+                <div class="bg-gradient-to-br from-cyan-400 to-cyan-600 h-48 flex items-center justify-center text-white text-6xl">🏪</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Local Comercial</h3>
+                        <span class="bg-red-100 text-red-500 text-xs font-bold px-3 py-1 rounded-full">Disponible</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Providencia, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Local con fachada principal en calle comercial. Ideal para retail y servicios.</p>
+                    <div class="flex gap-4 mb-4 text-sm text-gray-600">
+                        <span>💼 Local</span>
+                        <span>🪟 Vitrina</span>
+                        <span>📐 85 m²</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$1.8M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-500 hover:shadow-xl property-item" data-type="Departamento" data-location="Vitacura" data-beds="2" data-price="2500">
+                <div class="bg-gradient-to-br from-red-400 to-red-600 h-48 flex items-center justify-center text-white text-6xl">🏢</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Depto Vitacura</h3>
+                        <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-3 py-1 rounded-full">Premium</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Vitacura, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Departamento de lujo con servicios. Gimnasio, piscina y seguridad 24/7.</p>
+                    <div class="flex gap-4 mb-4 text-sm text-gray-600">
+                        <span>🛏️ 2 dorm</span>
+                        <span>🚿 2 baños</span>
+                        <span>📐 110 m²</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$2.5M</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-500 hover:shadow-xl property-item" data-type="Casa" data-location="Peñalolén" data-beds="2" data-price="950">
+                <div class="bg-gradient-to-br from-teal-400 to-teal-600 h-48 flex items-center justify-center text-white text-6xl">🏠</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold">Casa Peñalolén</h3>
+                        <span class="bg-red-100 text-red-500 text-xs font-bold px-3 py-1 rounded-full">Disponible</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">📍 Peñalolén, Santiago</p>
+                    <p class="text-gray-700 text-sm mb-4">Casa tranquila en zona residencial. Fácil acceso a centros comerciales y escuelas.</p>
+                    <div class="flex gap-4 mb-4 text-sm text-gray-600">
+                        <span>🛏️ 2 dorm</span>
+                        <span>🚿 1 baño</span>
+                        <span>📐 100 m²</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-2xl font-bold">$950K</span>
+                        <span class="text-gray-600 text-sm">por mes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="https://wa.me/56966078526" target="_blank" class="bg-red-500 text-white px-8 py-3 rounded-full font-bold hover:bg-red-600 inline-block">
+                Consultar por Más Propiedades
             </a>
         </div>
     </div>
@@ -372,6 +624,57 @@
                 target.scrollIntoView({ behavior: 'smooth' });
             }
         });
+    });
+
+    // Property Filter
+    function filterProperties() {
+        const location = document.getElementById('filterLocation').value.toLowerCase();
+        const type = document.getElementById('filterType').value;
+        const beds = document.getElementById('filterBeds').value;
+        const price = document.getElementById('filterPrice').value;
+
+        const properties = document.querySelectorAll('.property-item');
+        let visibleCount = 0;
+
+        properties.forEach(prop => {
+            let show = true;
+
+            if (location && !prop.dataset.location.toLowerCase().includes(location)) {
+                show = false;
+            }
+
+            if (type && prop.dataset.type !== type) {
+                show = false;
+            }
+
+            if (beds && prop.dataset.beds < beds && beds !== '0') {
+                show = false;
+            }
+
+            if (price) {
+                const propPrice = parseInt(prop.dataset.price);
+                if (price === '500' && propPrice > 500) show = false;
+                if (price === '1000' && (propPrice <= 500 || propPrice > 1000)) show = false;
+                if (price === '2000' && (propPrice <= 1000 || propPrice > 2000)) show = false;
+                if (price === '2001' && propPrice <= 2000) show = false;
+            }
+
+            if (show) {
+                prop.style.display = '';
+                visibleCount++;
+            } else {
+                prop.style.display = 'none';
+            }
+        });
+
+        if (visibleCount === 0) {
+            alert('No hay propiedades que coincidan con los filtros seleccionados');
+        }
+    }
+
+    // Enter key to filter
+    document.getElementById('filterLocation').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') filterProperties();
     });
 </script>
 
