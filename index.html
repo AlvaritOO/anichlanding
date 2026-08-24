@@ -9,9 +9,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; }
 
-        .primary-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-        .accent-blue { color: #0066cc; }
-        .accent-blue-bg { background-color: #0066cc; }
+        .primary-gradient { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+        .accent-red { color: #d41e3a; }
+        .accent-red-bg { background-color: #d41e3a; }
 
         .property-card {
             transition: all 0.3s ease;
@@ -19,8 +19,8 @@
             background: #ffffff;
         }
         .property-card:hover {
-            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.12);
-            border-color: #0066cc;
+            box-shadow: 0 20px 40px rgba(212, 30, 58, 0.15);
+            border-color: #d41e3a;
             transform: translateY(-4px);
         }
 
@@ -49,8 +49,8 @@
         }
 
         .badge-featured {
-            background-color: #dbeafe;
-            color: #1e40af;
+            background-color: #fee2e2;
+            color: #9f1239;
             border: 1px solid #bfdbfe;
         }
 
@@ -71,30 +71,30 @@
         h2 { color: #1e293b; }
 
         .btn-primary {
-            background-color: #0066cc;
+            background-color: #d41e3a;
             color: white;
             font-weight: 600;
             padding: 12px 28px;
             border-radius: 6px;
             transition: all 0.3s;
-            border: 2px solid #0066cc;
+            border: 2px solid #d41e3a;
         }
         .btn-primary:hover {
-            background-color: #0052a3;
-            border-color: #0052a3;
+            background-color: #b01730;
+            border-color: #b01730;
         }
 
         .btn-secondary {
             background-color: transparent;
-            color: #0066cc;
+            color: #d41e3a;
             font-weight: 600;
             padding: 12px 28px;
             border-radius: 6px;
-            border: 2px solid #0066cc;
+            border: 2px solid #d41e3a;
             transition: all 0.3s;
         }
         .btn-secondary:hover {
-            background-color: #f0f9ff;
+            background-color: #fef5f6;
         }
     </style>
 </head>
@@ -104,7 +104,7 @@
 <header class="sticky top-0 z-50 bg-white border-b border-gray-200">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <div class="flex items-center gap-2">
-            <div class="w-8 h-8 accent-blue-bg rounded-lg flex items-center justify-center text-white font-bold text-lg">A</div>
+            <div class="w-8 h-8 accent-red-bg rounded-lg flex items-center justify-center text-white font-bold text-lg">A</div>
             <span class="text-xl font-bold text-gray-900">Anich Pro</span>
         </div>
         <div class="hidden md:flex gap-8">
@@ -134,11 +134,11 @@
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div>
                     <label class="text-xs font-semibold text-gray-600 mb-2 block">UBICACIÓN</label>
-                    <input type="text" placeholder="Ciudad o comuna" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 text-gray-900">
+                    <input type="text" placeholder="Ciudad o comuna" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-600 mb-2 block">TIPO</label>
-                    <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 text-gray-900">
+                    <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
                         <option>Todos</option>
                         <option>Casa</option>
                         <option>Departamento</option>
@@ -148,7 +148,7 @@
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-600 mb-2 block">DORMITORIOS</label>
-                    <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 text-gray-900">
+                    <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
                         <option>Todos</option>
                         <option>1+</option>
                         <option>2+</option>
@@ -157,7 +157,7 @@
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-600 mb-2 block">RENTA</label>
-                    <input type="text" placeholder="Ej: $1M - $3M" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 text-gray-900">
+                    <input type="text" placeholder="Ej: $1M - $3M" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
                 </div>
                 <div class="flex items-end">
                     <button class="w-full btn-primary">Buscar</button>
@@ -299,11 +299,11 @@
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div>
                     <label class="text-xs font-semibold text-gray-600 mb-2 block">UBICACIÓN</label>
-                    <input type="text" id="filterLocation" placeholder="Ciudad o comuna" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 text-gray-900">
+                    <input type="text" id="filterLocation" placeholder="Ciudad o comuna" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-600 mb-2 block">TIPO</label>
-                    <select id="filterType" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 text-gray-900">
+                    <select id="filterType" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
                         <option value="">Todos</option>
                         <option value="Casa">Casa</option>
                         <option value="Departamento">Departamento</option>
@@ -313,7 +313,7 @@
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-600 mb-2 block">DORMITORIOS</label>
-                    <select id="filterBeds" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 text-gray-900">
+                    <select id="filterBeds" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
                         <option value="">Todos</option>
                         <option value="1">1+</option>
                         <option value="2">2+</option>
@@ -322,7 +322,7 @@
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-600 mb-2 block">RENTA</label>
-                    <select id="filterPrice" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 text-gray-900">
+                    <select id="filterPrice" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-red-500 text-gray-900">
                         <option value="">Todos</option>
                         <option value="500">Hasta $500K</option>
                         <option value="1000">$500K - $1M</option>
@@ -573,7 +573,7 @@
 
         <div class="grid md:grid-cols-3 gap-8">
             <!-- Plan 1 -->
-            <div class="border border-gray-200 rounded-lg p-8 hover:border-blue-400 hover:shadow-lg transition-all">
+            <div class="border border-gray-200 rounded-lg p-8 hover:border-red-500 hover:shadow-lg transition-all">
                 <h3 class="text-2xl font-bold mb-2 text-gray-900">Esencial</h3>
                 <div class="text-4xl font-bold accent-blue mb-6">5% + IVA</div>
                 <ul class="space-y-3 mb-8 text-gray-700">
@@ -598,8 +598,8 @@
             </div>
 
             <!-- Plan 2 - Popular -->
-            <div class="border-2 border-blue-400 rounded-lg p-8 bg-blue-50 relative">
-                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-400 text-white px-4 py-1 rounded-full text-sm font-semibold">
+            <div class="border-2 border-red-500 rounded-lg p-8 bg-red-50 relative">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                     Más Popular
                 </div>
                 <h3 class="text-2xl font-bold mb-2 text-gray-900 pt-4">Profesional</h3>
@@ -626,7 +626,7 @@
             </div>
 
             <!-- Plan 3 -->
-            <div class="border border-gray-200 rounded-lg p-8 hover:border-blue-400 hover:shadow-lg transition-all">
+            <div class="border border-gray-200 rounded-lg p-8 hover:border-red-500 hover:shadow-lg transition-all">
                 <h3 class="text-2xl font-bold mb-2 text-gray-900">Completo</h3>
                 <div class="text-4xl font-bold accent-blue mb-6">12% + IVA</div>
                 <ul class="space-y-3 mb-8 text-gray-700">
@@ -654,16 +654,16 @@
 </section>
 
 <!-- SEGURO -->
-<section id="seguro" class="py-24 bg-slate-900 text-white">
+<section id="seguro" class="py-24 bg-gray-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h2 class="text-4xl font-bold mb-3">Seguro de Arriendo</h2>
-                <h3 class="text-2xl text-blue-400 font-bold mb-8">Protección garantizada para tus ingresos</h3>
+                <h3 class="text-2xl text-red-500 font-bold mb-8">Protección garantizada para tus ingresos</h3>
 
                 <div class="space-y-6">
                     <div class="flex gap-4">
-                        <div class="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">✓</span>
                         </div>
                         <div>
@@ -672,7 +672,7 @@
                         </div>
                     </div>
                     <div class="flex gap-4">
-                        <div class="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">✓</span>
                         </div>
                         <div>
@@ -681,7 +681,7 @@
                         </div>
                     </div>
                     <div class="flex gap-4">
-                        <div class="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">✓</span>
                         </div>
                         <div>
@@ -703,7 +703,7 @@
 </section>
 
 <!-- CTA -->
-<section class="py-20 bg-blue-50">
+<section class="py-20 bg-red-50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-4xl font-bold mb-4 text-gray-900">¿Listo para comenzar?</h2>
         <p class="text-lg text-gray-600 mb-8">Administra profesionalmente tus propiedades con Anich Pro</p>
@@ -724,7 +724,7 @@
         <div class="grid md:grid-cols-5 gap-8 mb-12">
             <div>
                 <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center font-bold text-lg">A</div>
+                    <div class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center font-bold text-lg">A</div>
                     <span class="text-lg font-bold">Anich Pro</span>
                 </div>
                 <p class="text-gray-400 text-sm">Administración profesional de propiedades 100% digital</p>
@@ -758,7 +758,7 @@
                 <ul class="space-y-2 text-gray-400 text-sm">
                     <li>+56 9 6607 8526</li>
                     <li>Rancagua, Chile</li>
-                    <li><a href="https://wa.me/56966078526" class="text-blue-400 hover:text-blue-300 transition">WhatsApp</a></li>
+                    <li><a href="https://wa.me/56966078526" class="text-red-500 hover:text-blue-300 transition">WhatsApp</a></li>
                 </ul>
             </div>
         </div>
